@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsc && node dist/index.js developer",
+    "prod": "tsc && node dist/index.js production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
