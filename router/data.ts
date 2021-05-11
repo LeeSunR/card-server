@@ -13,15 +13,17 @@ export const versionCheck = (req:Request, res:Response, next:NextFunction)=>{
 
 export const download = async (req:Request, res:Response, next:NextFunction)=>{
     const data = await csvtojson().fromFile('data/list.csv')
+    let cnt = 1
     data.map((val:any)=>{
-        val.latitude = parseFloat(val.latitude)
-        val.longitude = parseFloat(val.longitude)
-        val.mainCategory = val.category.split('-')[0]
-        val.subCategory = val.category.split('-')[1]
-        return val
+        val.no = cnt++;
+        val.latitude = parseFloat(val.latitude);
+        val.longitude = parseFloat(val.longitude);
+        val.mainCategory = val.category.split('-')[0];
+        val.subCategory = val.category.split('-')[1];
+        return val;
     })
     res.status(200).json({
         result:true,
         data
-    })
+    });
 }
